@@ -1,6 +1,6 @@
-<!-- View: auth/angkatan.blade.php -->
+<!-- View: auth/jurusan.blade.php -->
 <div class="beranda -z-50">
-    <h3 class="text-3xl mb-4">Kelola Angkatan Anggota Aktif</h3>
+    <h3 class="text-3xl mb-4">Kelola Angkatan Alumni</h3>
     <div class="flex">
         <div class="ini">
             <button id="addButton" data-modal-show="modalID" class="ml-2 px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-500 focus:outline-none focus:shadow-outline-red active:bg-green-600 transition duration-150 ease-in-out">Tambah</button>
@@ -22,20 +22,14 @@
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-            @foreach ($angkatan->where('status', 'anggota') as $data)
+            @foreach ($angkatan->where('status', 'alumni') as $data)
                 <tr>
                     <td class="px-4 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
                     <td class="px-4 py-4 whitespace-nowrap">{{ $data->angkatan }}</td>
                     <td class="px-4 py-4 whitespace-nowrap">
-                        @if ($data->status === 'anggota')
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                Anggota
-                            </span>
-                        @else 
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                Alumni
-                            </span>
-                        @endif
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                            Alumni
+                        </span>
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
                         <button data-id="{{ $data->id }}" data-nama="{{ $data->angkatan }}" class="editButton px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
@@ -48,8 +42,8 @@
 <!-- Pagination Controls -->
 <div class="mt-7 flex justify-between items-center">
     <p class="text-xs text-gray-500">
-        <a href="{{route('angkatans')}}" id="angkatanAlumni" data-modal-show="modalID" class="ml-2 px-4 py-2 text-white bg-yellow-600 rounded-md hover:bg-yellow-500 focus:outline-none focus:shadow-outline-red active:bg-yellow-600 transition duration-150 ease-in-out">Alumni</a>
-        👈lihat data angkatan alumni
+        <a href="{{route('angkatan')}}" id="angkatanAlumni" data-modal-show="modalID" class="ml-2 px-4 py-2 text-white bg-yellow-600 rounded-md hover:bg-yellow-500 focus:outline-none focus:shadow-outline-red active:bg-yellow-600 transition duration-150 ease-in-out">Anggota Aktif</a>
+        👈lihat data angkatan anggota aktif
     </p>
 </div>
 
@@ -130,7 +124,7 @@
                 <p class="text-sm text-gray-500">Data Angkatan yang dihapus tidak dapat dikembalikan.</p>
             </div>
             <div class="px-4 py-3">
-        <form id="deleteForm" method="POST" action="">
+                <form id="deleteForm" method="POST" action="">
                     @csrf
                     @method('DELETE')
                     <div class="flex justify-end space-x-3">

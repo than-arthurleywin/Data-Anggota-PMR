@@ -1,12 +1,8 @@
 
     <!-- Sidebar -->
     <div class="w-64 bg-gray-800 text-white block h-full z-50 position-fixed">
-        <div class="p-5 text-xl font-semibold"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+        <div class="p-5 text-xl font-semibold"><a href="{{ route('/') }}">Dashboard</a></div>
         <ul>
-            <a href="{{route('home')}}"><li class="p-4 hover:bg-gray-700">
-                Beranda
-            </li>
-            </a>
             <a href="{{route('jurusan')}}">
             <li class="p-4 hover:bg-gray-700">
                 Jurusan
@@ -17,7 +13,7 @@
                 Angkatan
             </li>
            </a>
-           <a href="">
+           <a href="{{route('anggota')}}">
             <li class="p-4 hover:bg-gray-700">
                 Anggota
             </li>

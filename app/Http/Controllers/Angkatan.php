@@ -23,6 +23,20 @@ class Angkatan extends Controller
         return view('auth.angkatan', $data);
     }
 
+    public function shows()
+    {
+        if($this->cari != ""){
+            $data['angkatan'] = Angkatans::where('angkatan', 'like', '%' . $this->cari . '%')
+            ->paginate(5);
+        }
+        else{
+            $data['angkatan'] = Angkatans::paginate(5);
+        }
+
+        // Kirim data ke view
+        return view('auth.angkatans', $data);
+    }
+
      public function store(Request $request)
     {
         // Validasi input

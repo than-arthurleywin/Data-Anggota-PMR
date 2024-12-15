@@ -15,7 +15,7 @@
 
         <div class="flex-1 p-6">
             <!-- Menampilkan konten berdasarkan halaman yang aktif -->
-            @include('auth.components.content-angkatan')
+            @include('auth.components.angkatan-alumni')
         </div>
     </div>
 

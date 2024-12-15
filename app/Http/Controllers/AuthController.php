@@ -32,7 +32,7 @@ class AuthController extends Controller
         // Cek apakah login berhasil dengan Auth::attempt
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate(); // Perbarui session
-            return redirect()->route('dashboard'); // Arahkan ke halaman home
+            return redirect()->route('/'); // Arahkan ke halaman home
         }
 
         // Jika login gagal, beri pesan error
